@@ -5,14 +5,13 @@
     src="assets/images/print.png"
   />
 </h1>
-<br>
 
 ## ❓ About
 
 Memory Game is a simply game that I developed to learn more about javasctript. Hope you all like it!
 
 
----
+
 
 ## 👨‍💻 How to Setup
 
@@ -25,7 +24,6 @@ Memory Game is a simply game that I developed to learn more about javasctript. H
   $ cd Memory-Game
 ```
 
----
 
 ## 🛠️ Tools
 
@@ -34,14 +32,9 @@ Memory Game is a simply game that I developed to learn more about javasctript. H
 * [JS](https://js.org/) 
 
 
----
-
-
 ## 📝 License
 
 This project is under the MIT license. See the file [LICENSE.md](LICENSE) for more details.
-
-<br>
 
 ---
 
