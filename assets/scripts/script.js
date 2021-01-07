@@ -3,33 +3,14 @@ const BACK = "card_back"
 const CARD = "card"
 const ICON = "icon"
 
-let techs = [
-    'bootstrap',
-    'css',
-    'electron',
-    'firebase',
-    'html',
-    'javascript',
-    'jquery',
-    'mongo',
-    'node',
-    'react',
-];
-
-let cards = null;
 
 // começar jogo
 startGame();
 
 function startGame() {
-    // criar cartas
-    cards = createCardsFromTechs(techs);
-
-    // embaralhar
-    shuffleCards(cards);
-
-    // montar tabuleiro
-    initializeCards(cards);
+    
+    // montar tabuleiro  // criar cartas
+    initializeCards(game.createCardsFromTechs());
 }
 
 
@@ -37,8 +18,11 @@ function initializeCards(cards) {
     // pegar o tabuleiro
     let gameBoard = document.getElementById('gameBoard');
     
+    // limpa o tabuleiro
+    gameBoard.innerHTML = ''
+
     // para cada carta vai criar o elemento html
-    cards.forEach((card) => {
+    game.cards.forEach((card) => {
 
         // cria a div (em volta)
         let cardElement = document.createElement('div');
@@ -98,60 +82,51 @@ function createCardFace(face, card, element) {
     element.appendChild(cardElementFace)
 }
 
-
-function shuffleCards(cards) {
-    // index atual começa em 20 
-    let currentIndex = cards.length;
-    let randomIndex = 0;
-
-    while(currentIndex !== 0) {
-        // gera um Index aleatório para trocar de posição
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        // diminui o Index atual
-        currentIndex--;
-
-        // joga o valor do cards[randomIndex] em cards[currentIndex]] e ao contrário também.
-        [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]];
-    }
-}
-
-function createCardsFromTechs(techs) {
-
-    let cards = [];
-
-    // para cada tech ele chama a função createPairFromTech
-    techs.forEach((tech) => {
-        cards.push(createPairFromTech(tech));
-    });     
-    
-    // Retorna um array com as 20 cartas. 
-    // Se desse só um map, retornaria um array com 10 arrays em pares
-
-    return cards.flatMap(pair => pair);
-}
-
-function createPairFromTech(tech) {
-    // Retorna 1 array com duas cartas da mesma tech, mas com ids diferentes
-    return [
-        {
-            id: createIdWithTech(tech),
-            icon: tech,
-            flipped: false
-        }, 
-        {
-            id: createIdWithTech(tech),
-            icon: tech,
-            flipped: false
-        }
-    ];
-}
-
-function createIdWithTech(tech) {
-    // cria Id
-    return tech + parseInt(Math.random() * 1000);
-}
-
 function flipCard() {
-    // add a classe flip no elemento clicado, o this é a divzona
-    this.classList.add('flip');
+
+    // se eu conseguir colocar uma carta, eu coloco o flip
+    if(game.setCard(this.id)){
+        // add a classe flip no elemento clicado, o this é a divzona
+        this.classList.add('flip');
+
+
+        // se tiver a secondCard ele vai verificar se deu match
+        if(game.secondCard) {
+            // se teve um match limpa as variáveis
+            if(game.checkMatch()) {
+                game.clearCards()
+
+                // em todo match, ve se tem um gameOver
+                if(game.checkGameOver()) {
+                    let gameOverLayer = document.getElementById('gameOver');
+                    gameOverLayer.style.display = 'flex';
+                }
+            } else {
+                // tempinho
+                setTimeout(() => {
+
+                    // pega as cartas que foram selecionadas
+                    let firstCardView = document.getElementById(game.firstCard.id);
+                    let secondCardView = document.getElementById(game.secondCard.id);
+
+                    // remove as classes para voltar para baixo
+                    firstCardView.classList.remove('flip');
+                    secondCardView.classList.remove('flip');
+
+                    // tira o flipped = true dos elemntos e limpa a variável
+                    game.unflipCards();
+                }, 1000)
+            
+            }
+        }
+    }
+    
+}
+
+
+function restart() {
+    game.clearCards();
+    startGame();
+    let gameOverLayer = document.getElementById('gameOver');
+    gameOverLayer.style.display = 'none';
 }
