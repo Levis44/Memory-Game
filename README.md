@@ -11,13 +11,10 @@
 
 Memory Game is a simply game that I developed to learn more about javasctript. Hope you all like it!
 
-<br>
 
 ---
 
-<br>
-
-### 👨‍💻 How to Setup
+## 👨‍💻 How to Setup
 
 ```bash
   # Clone the project
@@ -27,11 +24,8 @@ Memory Game is a simply game that I developed to learn more about javasctript. H
   # Enter directory
   $ cd Memory-Game
 ```
-<br>
 
 ---
-
-<br>
 
 ## 🛠️ Tools
 
@@ -39,11 +33,9 @@ Memory Game is a simply game that I developed to learn more about javasctript. H
 * [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS) 
 * [JS](https://js.org/) 
 
-<br>
 
 ---
 
-<br>
 
 ## 📝 License
 
