@@ -6,16 +6,20 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     background-color: teal;
 }
 
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
 .card {
-    width: 130px;
-    height: 130px;
+    width: 115px;
+    height: 115px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform .5s;
@@ -77,4 +81,12 @@ body {
     display: grid;
     grid-template: 1fr 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr;
     gap: 20px;
+}
+
+.movements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

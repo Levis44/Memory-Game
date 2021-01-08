@@ -89,6 +89,13 @@ function flipCard() {
         // add a classe flip no elemento clicado, o this é a divzona
         this.classList.add('flip');
 
+        // pega o moves
+        let movesLayer = document.getElementById('moves');
+        // add no moves
+        let moves = game.addMove();
+        // exibe
+        movesLayer.innerHTML = moves;
+
 
         // se tiver a secondCard ele vai verificar se deu match
         if(game.secondCard) {
@@ -100,6 +107,7 @@ function flipCard() {
                 if(game.checkGameOver()) {
                     let gameOverLayer = document.getElementById('gameOver');
                     gameOverLayer.style.display = 'flex';
+                    
                 }
             } else {
                 // tempinho
@@ -125,6 +133,7 @@ function flipCard() {
 
 
 function restart() {
+    game.resetMoves();
     game.clearCards();
     startGame();
     let gameOverLayer = document.getElementById('gameOver');

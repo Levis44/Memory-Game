@@ -4,6 +4,7 @@ let game = {
     firstCard: null,
     secondCard: null,
     cards : null,
+    moves : 1,
 
     techs : [
         'bootstrap',
@@ -79,7 +80,7 @@ let game = {
     },
 
 
-    createCardsFromTechs: function(techs) {
+    createCardsFromTechs: function() {
 
         this.cards = [];
     
@@ -132,6 +133,14 @@ let game = {
             // joga o valor do cards[randomIndex] em cards[currentIndex]] e ao contrário também.
             [this.cards[randomIndex], this.cards[currentIndex]] = [this.cards[currentIndex], this.cards[randomIndex]];
         }
+    },
+
+    addMove : function () {
+        return this.moves++
+    },
+
+    resetMoves : function () {
+        this.moves = 1;
     }
 
 }
