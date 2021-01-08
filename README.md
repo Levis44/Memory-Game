@@ -2,7 +2,7 @@
 
 <h1>
   <img 
-    src="assets/images/print.png"
+    src="src/assets/images/print.png"
   />
 </h1>
 
@@ -10,7 +10,9 @@
 
 Memory Game is a simply game that I developed to learn more about javasctript. Hope you all like it!
 
+## 🖥️ Try it out here!
 
+https://memory-game-levis.netlify.app/
 
 
 ## 👨‍💻 How to Setup
